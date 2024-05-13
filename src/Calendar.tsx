@@ -7,11 +7,12 @@ const Calendar: React.FC = () => {
 
   useEffect(() => {
     const fetchHolidays = async () => {
-      const token = import.meta.env.API_TOKEN;
+      const token = import.meta.env.VITE_API_TOKEN;
       const endpoint = "/api/holidays";
-      // Update the dates to cover the entire year of 2024
       const startDate = "2024-01-01";
       const endDate = "2024-12-31";
+
+      console.log(import.meta.env);
 
       try {
         const response = await axios.get(endpoint, {
