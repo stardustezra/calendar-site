@@ -1,33 +1,42 @@
-.calendar {
+/* Flex container for calendar months */
+.calendar-flex-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  gap: 20px; /* Adjust as needed */
 }
 
+/* Individual calendar month */
 .calendar-month {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 2rem;
+  flex: 1; /* Each month takes equal space */
 }
 
+/* Grid for displaying calendar days */
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 1rem;
+  grid-template-columns: 1fr; /* 1 column for each day */
+  grid-auto-rows: minmax(30px, auto); /* Dynamic row height */
+  grid-gap: 5px;
 }
 
+/* Individual day within the calendar */
 .calendar-day {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #ccc;
-  padding: 1rem;
-  min-height: 100px;
+  padding: 5px;
+  border: 1px solid #eee;
+  text-align: center;
 }
 
-.holiday-indicator {
-  color: red;
+/* Styling for the day number */
+.day-number {
   font-weight: bold;
+}
+
+/* Indicator for holidays or Sundays */
+.holiday-indicator,
+.sunday {
+  background-color: #f2f2f2; /* Slightly grayed out */
+}
+
+/* Additional styling for the calendar title */
+.calendar h2 {
+  text-align: center;
+  margin: 10px 0;
 }

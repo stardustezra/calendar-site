@@ -4,7 +4,20 @@ import { Holiday } from "./types/holidayTypes";
 
 const Calendar: React.FC = () => {
   const [holidays, setHolidays] = useState<Holiday[]>([]);
-  const months = ["January", "February", "March", "April", "May", "June"];
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
   useEffect(() => {
     const fetchHolidays = async () => {
@@ -12,8 +25,6 @@ const Calendar: React.FC = () => {
       const endpoint = "/api/holidays";
       const startDate = "2024-01-01";
       const endDate = "2024-12-31";
-
-      console.log(import.meta.env);
 
       try {
         const response = await axios.get(endpoint, {
@@ -58,13 +69,20 @@ const Calendar: React.FC = () => {
 
   const renderCalendar = () => {
     const year = 2024; // Set the year here
+    const firstSixMonths = months.slice(0, 6); // Get the first six months
 
-    return months.map((monthName, index) => (
-      <div key={monthName} className="calendar-month">
-        <h2>{monthName}</h2>
-        <div className="calendar-grid">{renderCalendarGrid(index, year)}</div>
+    return (
+      <div className="calendar-flex-container">
+        {firstSixMonths.map((monthName, index) => (
+          <div key={monthName} className="calendar-month">
+            <h2>{monthName}</h2>
+            <div className="calendar-grid">
+              {renderCalendarGrid(index, year)}
+            </div>
+          </div>
+        ))}
       </div>
-    ));
+    );
   };
 
   return (
