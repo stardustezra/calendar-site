@@ -1,0 +1,35 @@
+/* index.css */
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.calendar {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.calendar h2 {
+  text-align: center;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.calendar-day {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.day-number {
+  font-weight: bold;
+}
+
+.holiday-indicator {
+  color: red;
+}
