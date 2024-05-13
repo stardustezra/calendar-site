@@ -4,6 +4,7 @@ import { Holiday } from "./types/holidayTypes";
 
 const Calendar: React.FC = () => {
   const [holidays, setHolidays] = useState<Holiday[]>([]);
+  const months = ["January", "February", "March", "April", "May", "June"];
 
   useEffect(() => {
     const fetchHolidays = async () => {
@@ -34,23 +35,42 @@ const Calendar: React.FC = () => {
     fetchHolidays();
   }, []);
 
-  const renderCalendarGrid = () => {
-    const daysInMonth = Array.from({ length: 30 }, (_, index) => index + 1);
+  const renderCalendarGrid = (month: number, year: number) => {
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-    return daysInMonth.map((day) => (
-      <div key={day} className="calendar-day">
-        <span className="day-number">{day}</span>
-        {holidays.some(
-          (holiday) => new Date(holiday.date).getDate() === day
-        ) && <span className="holiday-indicator">Holiday!</span>}
+    return Array.from({ length: daysInMonth }, (_, index) => {
+      const day = index + 1;
+      const holiday = holidays.find(
+        (holiday) =>
+          new Date(holiday.date).getFullYear() === year &&
+          new Date(holiday.date).getMonth() === month &&
+          new Date(holiday.date).getDate() === day
+      );
+
+      return (
+        <div key={day} className="calendar-day">
+          <span className="day-number">{day}</span>
+          {holiday && <span className="holiday-indicator">{holiday.name}</span>}
+        </div>
+      );
+    });
+  };
+
+  const renderCalendar = () => {
+    const year = 2024; // Set the year here
+
+    return months.map((monthName, index) => (
+      <div key={monthName} className="calendar-month">
+        <h2>{monthName}</h2>
+        <div className="calendar-grid">{renderCalendarGrid(index, year)}</div>
       </div>
     ));
   };
 
   return (
     <div className="calendar">
-      <h2>Holidays</h2>
-      <div className="calendar-grid">{renderCalendarGrid()}</div>
+      <h1>Holidays</h1>
+      {renderCalendar()}
     </div>
   );
 };
