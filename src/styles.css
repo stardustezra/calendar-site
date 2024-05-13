@@ -19,14 +19,22 @@
 
 /* Individual day within the calendar */
 .calendar-day {
+  display: flex;
+  flex-direction: column;
   padding: 5px;
   border: 1px solid #eee;
-  text-align: center;
+}
+
+/* Styling for the day name */
+.day-name {
+  text-align: left;
+  font-size: 12px;
 }
 
 /* Styling for the day number */
 .day-number {
   font-weight: bold;
+  text-align: left;
 }
 
 /* Indicator for holidays or Sundays */

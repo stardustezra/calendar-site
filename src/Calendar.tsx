@@ -51,6 +51,10 @@ const Calendar: React.FC = () => {
 
     return Array.from({ length: daysInMonth }, (_, index) => {
       const day = index + 1;
+      const date = new Date(year, month, day);
+      const dayName = date
+        .toLocaleDateString("en-US", { weekday: "short" })
+        .charAt(0); // Get the first character
       const holiday = holidays.find(
         (holiday) =>
           new Date(holiday.date).getFullYear() === year &&
@@ -60,6 +64,7 @@ const Calendar: React.FC = () => {
 
       return (
         <div key={day} className="calendar-day">
+          <span className="day-name">{dayName}</span>
           <span className="day-number">{day}</span>
           {holiday && <span className="holiday-indicator">{holiday.name}</span>}
         </div>
