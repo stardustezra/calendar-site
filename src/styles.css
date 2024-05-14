@@ -14,34 +14,38 @@
   display: grid;
   grid-template-columns: 1fr; /* 1 column for each day */
   grid-auto-rows: minmax(30px, auto); /* Dynamic row height */
-  grid-gap: 5px;
+  gap: 0; /* Remove grid gap */
 }
 
 /* Individual day within the calendar */
 .calendar-day {
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* Align items horizontally */
+  align-items: center; /* Center items vertically */
   padding: 5px;
-  border: 1px solid #eee;
+  border: 1px solid #eee; /* Add border to each day */
+  box-sizing: border-box; /* Ensure border is included in element's total width and height */
 }
 
 /* Styling for the day name */
 .day-name {
-  text-align: left;
   font-size: 12px;
   text-transform: uppercase; /* Ensure day names are uppercase */
+  margin-right: 5px; /* Space between day name and date */
 }
 
 /* Styling for the day number */
 .day-number {
   font-weight: bold;
-  text-align: left;
+  margin-right: 5px; /* Space between date and holiday */
 }
 
-/* Indicator for holidays or Sundays */
-.holiday-indicator,
-.sunday {
+/* Indicator for holidays */
+.holiday-indicator {
   background-color: #f2f2f2; /* Slightly grayed out */
+  padding: 2px 4px;
+  border-radius: 3px;
+  margin-right: 5px; /* Space between holiday and the next element */
 }
 
 /* Additional styling for the calendar title */
