@@ -4,20 +4,7 @@ import { Holiday } from "./types/holidayTypes";
 
 const Calendar: React.FC = () => {
   const [holidays, setHolidays] = useState<Holiday[]>([]);
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+  const months = ["Januar", "Februar", "Marts", "April", "Maj", "Juni"];
 
   useEffect(() => {
     const fetchHolidays = async () => {
@@ -28,13 +15,8 @@ const Calendar: React.FC = () => {
 
       try {
         const response = await axios.get(endpoint, {
-          params: {
-            startDate,
-            endDate,
-          },
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          params: { startDate, endDate },
+          headers: { Authorization: `Bearer ${token}` },
         });
         const data = response.data;
         setHolidays(data);
@@ -53,8 +35,9 @@ const Calendar: React.FC = () => {
       const day = index + 1;
       const date = new Date(year, month, day);
       const dayName = date
-        .toLocaleDateString("en-US", { weekday: "short" })
-        .charAt(0); // Get the first character
+        .toLocaleDateString("da-DK", { weekday: "short" })
+        .charAt(0)
+        .toUpperCase(); // Get the first character and convert to uppercase
       const holiday = holidays.find(
         (holiday) =>
           new Date(holiday.date).getFullYear() === year &&
@@ -90,12 +73,7 @@ const Calendar: React.FC = () => {
     );
   };
 
-  return (
-    <div className="calendar">
-      <h1>Holidays</h1>
-      {renderCalendar()}
-    </div>
-  );
+  return <div className="calendar">{renderCalendar()}</div>;
 };
 
 export default Calendar;

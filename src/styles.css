@@ -29,6 +29,7 @@
 .day-name {
   text-align: left;
   font-size: 12px;
+  text-transform: uppercase; /* Ensure day names are uppercase */
 }
 
 /* Styling for the day number */
