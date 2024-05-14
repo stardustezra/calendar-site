@@ -4,7 +4,14 @@ import { Holiday } from "./types/holidayTypes";
 
 const Calendar: React.FC = () => {
   const [holidays, setHolidays] = useState<Holiday[]>([]);
-  const months = ["Januar", "Februar", "Marts", "April", "Maj", "Juni"];
+  const months = [
+    "Januar 2024",
+    "Februar 2024",
+    "Marts 2024",
+    "April 2024",
+    "Maj 2024",
+    "Juni 2024",
+  ];
 
   useEffect(() => {
     const fetchHolidays = async () => {
@@ -45,8 +52,26 @@ const Calendar: React.FC = () => {
           new Date(holiday.date).getDate() === day
       );
 
+      // Check if the current date is between May 13th and May 19th
+      const isSpecialRange = month === 4 && day >= 13 && day <= 19;
+
+      // Determine if the day is Saturday (6) or Sunday (0)
+      const isSaturday = date.getDay() === 6;
+      const isSunday = date.getDay() === 0;
+
+      // Determine the class names to apply
+      const dayClassNames = [
+        "calendar-day",
+        isSpecialRange ? "special-range" : "",
+        isSaturday ? "saturday" : "",
+        isSunday ? "sunday" : "",
+        holiday ? "holiday" : "",
+      ]
+        .filter(Boolean)
+        .join(" ");
+
       return (
-        <div key={day} className="calendar-day">
+        <div key={day} className={dayClassNames}>
           <span className="day-name">{dayName}</span>
           <span className="day-number">{day}</span>
           {holiday && <span className="holiday-indicator">{holiday.name}</span>}

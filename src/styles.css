@@ -23,9 +23,9 @@
   grid-template-columns: 20px auto auto; /* Adjust column widths as needed */
   align-items: center; /* Center items vertically */
   padding: 5px;
-  border: 1px solid #eee; /* Add border to each day */
-  box-sizing: border-box; /* Ensure border is included in element's total width and height */
-  line-height: 20px; /* Set line height */
+  border: 1px solid #eee;
+  box-sizing: border-box;
+  line-height: 20px;
 }
 
 /* Styling for the day name */
@@ -43,7 +43,6 @@
 /* Indicator for holidays */
 .holiday-indicator {
   background-color: #f2f2f2; /* Slightly grayed out */
-  padding: 2px 4px;
   border-radius: 3px;
   margin-right: 0; /* No space between holiday and the next element */
 }
@@ -52,4 +51,29 @@
 .calendar h2 {
   text-align: center;
   margin: 10px 0;
+}
+
+/* Grey out only the day and date for Saturdays */
+.calendar-day.saturday {
+  background-color: #f2f2f2;
+}
+
+/* Grey out the whole cell for Sundays */
+.calendar-day.sunday {
+  background-color: #f2f2f2;
+}
+
+/* Grey out the whole cell for holidays */
+.calendar-day.holiday {
+  background-color: #f2f2f2;
+}
+
+/* Apply special style for special range */
+.calendar-day.special-range {
+  background-color: greenyellow; /* Background color for special range */
+}
+
+/* Remove background color for holidays within special range */
+.calendar-day.special-range .holiday-indicator {
+  background-color: transparent;
 }
