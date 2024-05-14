@@ -1,7 +1,7 @@
 /* Flex container for calendar months */
 .calendar-flex-container {
   display: flex;
-  gap: 20px; /* Adjust as needed */
+  gap: 10px; /* Adjust as needed */
 }
 
 /* Individual calendar month */
@@ -19,8 +19,8 @@
 
 /* Individual day within the calendar */
 .calendar-day {
-  display: flex;
-  flex-direction: row; /* Align items horizontally */
+  display: grid;
+  grid-template-columns: 20px auto auto; /* Adjust column widths as needed */
   align-items: center; /* Center items vertically */
   padding: 5px;
   border: 1px solid #eee; /* Add border to each day */
@@ -30,7 +30,6 @@
 
 /* Styling for the day name */
 .day-name {
-  font-size: 12px;
   text-transform: uppercase; /* Ensure day names are uppercase */
   margin-right: 5px; /* Space between day name and date */
 }
@@ -38,7 +37,7 @@
 /* Styling for the day number */
 .day-number {
   font-weight: bold;
-  margin-right: 5px; /* Space between date and holiday */
+  margin-right: 5px; /* Add small space between date and holiday */
 }
 
 /* Indicator for holidays */
@@ -46,7 +45,7 @@
   background-color: #f2f2f2; /* Slightly grayed out */
   padding: 2px 4px;
   border-radius: 3px;
-  margin-right: 5px; /* Space between holiday and the next element */
+  margin-right: 0; /* No space between holiday and the next element */
 }
 
 /* Additional styling for the calendar title */
