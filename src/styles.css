@@ -25,6 +25,7 @@
   padding: 5px;
   border: 1px solid #eee; /* Add border to each day */
   box-sizing: border-box; /* Ensure border is included in element's total width and height */
+  line-height: 20px; /* Set line height */
 }
 
 /* Styling for the day name */
